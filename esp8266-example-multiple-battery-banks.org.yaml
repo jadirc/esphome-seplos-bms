@@ -33,15 +33,13 @@ logger:
 
 # If you use Home Assistant please remove this `mqtt` section and uncomment the `api` component!
 # The native API has many advantages over MQTT: https://esphome.io/components/api.html#advantages-over-mqtt
-
 mqtt:
-  broker: iobroker
-  port: 1886
-  username: jd
+  broker: !secret mqtt_host
+  username: !secret mqtt_username
   password: !secret mqtt_password
-  
+  id: mqtt_client
 
-#api:
+# api:
 
 uart:
   id: uart_0
@@ -75,6 +73,7 @@ seplos_bms:
     protocol_version: 0x20
     seplos_modbus_id: modbus0
     update_interval: 10s
+  
 
 sensor:
   - platform: seplos_bms
@@ -114,4 +113,3 @@ sensor:
       name: "${battery_bank1} power"
     state_of_charge:
       name: "${battery_bank1} state of charge"
-
