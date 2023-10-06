@@ -2,7 +2,6 @@ substitutions:
   name: seplos-bms
   battery_bank0: "${name} bank 0"
   battery_bank1: "${name} bank 1"
-  battery_bank2: "${name} bank 2"
   device_description: "Monitor a Seplos BMS via RS485"
   external_components_source: github://syssi/esphome-seplos-bms@main
   tx_pin: GPIO4
@@ -45,7 +44,7 @@ mqtt:
 
 uart:
   id: uart_0
-  baud_rate: 19200
+  baud_rate: 9600
   tx_pin: ${tx_pin}
   rx_pin: ${rx_pin}
   # The increased RX buffer size is important because
@@ -61,7 +60,7 @@ seplos_bms:
     # Dip switch configuration of the first pack / address 0x01
     #  8    7    6    5    4    3    2   1
     # off, off, off, off, off, off, off, on
-    address: 0x01
+    address: 0x00
     # Known protocol versions: 0x20 (Seplos), 0x26 (Boqiang)
     protocol_version: 0x20
     seplos_modbus_id: modbus0
@@ -70,7 +69,7 @@ seplos_bms:
     # Dip switch configuration of the second pack / address 0x02
     #  8    7    6    5    4    3   2    1
     # off, off, off, off, off, off, on, off
-    address: 0x02
+    address: 0x01
     # Known protocol versions: 0x20 (Seplos), 0x26 (Boqiang)
     protocol_version: 0x20
     seplos_modbus_id: modbus0
