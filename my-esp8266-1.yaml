@@ -1,5 +1,5 @@
 substitutions:
-  name: seplos-bms
+  #name: seplos-bms
   device_description: "Monitor a Seplos BMS via RS485"
   external_components_source: github://syssi/esphome-seplos-bms@main
   tx_pin: GPIO4
@@ -40,7 +40,7 @@ web_server:
 uart:
   id: uart_0
   # Please set the default baudrate of your Seplos BMS model here. It's sometimes 19200 baud instead of 9600.
-  baud_rate: 19200
+  baud_rate: 9600
   tx_pin: ${tx_pin}
   rx_pin: ${rx_pin}
   # The increased RX buffer size is important because
